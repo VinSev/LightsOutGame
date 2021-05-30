@@ -7,9 +7,7 @@ import java.util.Random;
 
 public class BoardCtrl {
 
-    public static BoardCtrl boardCtrl;
-
-    private Board board;
+    private final Board board;
 
     public BoardCtrl() {
         board = new Board(5);

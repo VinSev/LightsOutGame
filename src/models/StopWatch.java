@@ -3,8 +3,6 @@ package models;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.util.Duration;
 import observers.StopWatchObservable;
 import observers.StopWatchObserver;

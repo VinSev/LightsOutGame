@@ -5,9 +5,7 @@ import observers.MoveCounterObserver;
 
 public class MoveCounterCtrl {
 
-    public static MoveCounterCtrl moveCounterCtrl;
-
-    private MoveCounter moveCounter;
+    private final MoveCounter moveCounter;
 
     public MoveCounterCtrl() {
         moveCounter = new MoveCounter();

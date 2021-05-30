@@ -1,6 +1,6 @@
 package observers;
 
 public interface BoardObservable {
-    public void register(BoardObserver observer);
-    public void notifyAllObservers();
+    void register(BoardObserver observer);
+    void notifyAllObservers();
 }

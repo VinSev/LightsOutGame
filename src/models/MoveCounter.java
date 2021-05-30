@@ -1,7 +1,5 @@
 package models;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import observers.MoveCounterObservable;
 import observers.MoveCounterObserver;
 
@@ -10,7 +8,7 @@ import java.util.List;
 
 public class MoveCounter implements MoveCounterObservable {
 
-    private final List<MoveCounterObserver> observers = new ArrayList<MoveCounterObserver>();
+    private final List<MoveCounterObserver> observers = new ArrayList<>();
 
     private int moveCount;
 

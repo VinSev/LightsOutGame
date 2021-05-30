@@ -1,6 +1,6 @@
 package observers;
 
 public interface MoveCounterObservable {
-    public void register(MoveCounterObserver observer);
-    public void notifyAllObservers();
+    void register(MoveCounterObserver observer);
+    void notifyAllObservers();
 }

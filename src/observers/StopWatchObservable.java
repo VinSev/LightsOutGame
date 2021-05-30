@@ -1,6 +1,6 @@
 package observers;
 
 public interface StopWatchObservable {
-    public void register(StopWatchObserver observer);
-    public void notifyAllObservers();
+    void register(StopWatchObserver observer);
+    void notifyAllObservers();
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Board implements BoardObservable {
 
-    private final List<BoardObserver> observers = new ArrayList<BoardObserver>();
+    private final List<BoardObserver> observers = new ArrayList<>();
 
     private int size;
     private Lamp[][] board;

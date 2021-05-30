@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 
 public class Lamp {
 
-    private Button lamp;
+    private final Button lamp;
     private boolean isActive;
 
     public Lamp(Button lamp) {

@@ -5,9 +5,7 @@ import observers.StopWatchObserver;
 
 public class StopWatchCtrl {
 
-    public static StopWatchCtrl stopWatchCtrl;
-
-    private StopWatch stopWatch;
+    private final StopWatch stopWatch;
 
     public StopWatchCtrl() {
         stopWatch = new StopWatch();
