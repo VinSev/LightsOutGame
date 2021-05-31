@@ -115,9 +115,7 @@ public class GameView implements BoardObserver, MoveCounterObserver, SolverObser
         Button lamp = boardMatrix[row][column].getLamp();
         lamp.setPrefSize(610 / boardSize - 2, 610 / boardSize - 2);
 
-        lamp.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-            gameCtrl.lampAction(row, column);
-        });
+        lamp.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> gameCtrl.lampAction(row, column));
         return lamp;
     }
 }
