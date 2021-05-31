@@ -1,9 +1,6 @@
 package views;
 
-import controllers.BoardCtrl;
-import controllers.GameCtrl;
-import controllers.MoveCounterCtrl;
-import controllers.StopWatchCtrl;
+import controllers.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,7 +15,7 @@ import observers.*;
 
 import java.io.IOException;
 
-public class GameView implements BoardObserver, MoveCounterObserver, StopWatchObserver {
+public class GameView implements BoardObserver, MoveCounterObserver, SolverObserver, StopWatchObserver {
     //ScreenSize
     int WIDTH = 760;
     int HEIGHT = 710;
@@ -29,6 +26,7 @@ public class GameView implements BoardObserver, MoveCounterObserver, StopWatchOb
 
     private final BoardCtrl boardCtrl;
     private final MoveCounterCtrl moveCounterCtrl;
+    private final SolverCtrl solverCtrl;
     private final StopWatchCtrl stopWatchCtrl;
 
     public GameView(Stage primaryStage) {
@@ -41,6 +39,9 @@ public class GameView implements BoardObserver, MoveCounterObserver, StopWatchOb
 
         moveCounterCtrl = gameCtrl.getInstanceMoveCounterCtrl();
         moveCounterCtrl.registerObserver(this);
+
+        solverCtrl = gameCtrl.getInstanceSolverCtrl();
+        solverCtrl.registerObserver(this);
 
         stopWatchCtrl = gameCtrl.getInstanceStopWatchCtrl();
         stopWatchCtrl.registerObserver(this);
@@ -65,6 +66,11 @@ public class GameView implements BoardObserver, MoveCounterObserver, StopWatchOb
     public void update(MoveCounterObservable observable) {
         String moveCounter = moveCounterCtrl.getMoveCounter().getMoveCounter();
         gameCtrl.getMoveCounterLabel().setText(moveCounter);
+    }
+
+    @Override
+    public void update(SolverObservable observable) {
+
     }
 
     @Override
@@ -124,5 +130,4 @@ public class GameView implements BoardObserver, MoveCounterObserver, StopWatchOb
         );
         return lamp;
     }
-
 }

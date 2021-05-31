@@ -7,6 +7,7 @@ import javafx.scene.layout.FlowPane;
 import models.Board;
 import models.Lamp;
 import models.MoveCounter;
+import models.Solver;
 import models.StopWatch;
 
 public class GameCtrl {
@@ -18,7 +19,7 @@ public class GameCtrl {
     private Label moveCounterLabel;
     @FXML
     private void solveGameAction() {
-        System.out.println("Solver not implemented");
+        solverCtrl.getSolver().run();
     }
     @FXML
     private void resetGameAction() {
@@ -52,6 +53,7 @@ public class GameCtrl {
     private static GameCtrl gameCtrl;
     private static BoardCtrl boardCtrl;
     private static MoveCounterCtrl moveCounterCtrl;
+    private static SolverCtrl solverCtrl;
     private static StopWatchCtrl stopWatchCtrl;
 
     public static BoardCtrl getInstanceBoardCtrl() {
@@ -73,6 +75,13 @@ public class GameCtrl {
             moveCounterCtrl = new MoveCounterCtrl();
         }
         return moveCounterCtrl;
+    }
+
+    public static SolverCtrl getInstanceSolverCtrl() {
+        if(solverCtrl == null) {
+            solverCtrl = new SolverCtrl(boardCtrl.getBoard());
+        }
+        return solverCtrl;
     }
 
     public static StopWatchCtrl getInstanceStopWatchCtrl() {
