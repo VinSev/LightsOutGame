@@ -7,7 +7,6 @@ import javafx.scene.layout.FlowPane;
 import models.Board;
 import models.Lamp;
 import models.MoveCounter;
-import models.Solver;
 import models.StopWatch;
 
 public class GameCtrl {

@@ -124,7 +124,7 @@ public class Solver implements SolverObservable {
                 if(booleanBoard[i][j]) {
                     try {
                         click(j, i + 1);
-                    } catch(Exception e) {}
+                    } catch(Exception ignored) {}
                 }
             }
         }
