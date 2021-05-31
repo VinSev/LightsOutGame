@@ -116,18 +116,8 @@ public class GameView implements BoardObserver, MoveCounterObserver, SolverObser
         lamp.setPrefSize(610 / boardSize - 2, 610 / boardSize - 2);
 
         lamp.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-            boardCtrl.clickLampOnBoard(row, column);
-            boolean hasWon = gameCtrl.winGameDetection();
-            if(hasWon) {
-                stopWatchCtrl.getStopWatch().stopStopWatch();
-            }
-            int moveCount = moveCounterCtrl.getMoveCounter().getMoveCount();
-            if(moveCount == 0) {
-                stopWatchCtrl.getStopWatch().startStopWatch();
-            }
-            moveCounterCtrl.getMoveCounter().addToMoveCount();
-        } // Zou het beter zijn om dit in een LampCtrl ofzo te behandelen ipv in de GameView?
-        );
+            gameCtrl.lampAction(row, column);
+        });
         return lamp;
     }
 }

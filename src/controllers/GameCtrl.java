@@ -125,4 +125,17 @@ public class GameCtrl {
     public Label getMoveCounterLabel() {
         return moveCounterLabel;
     }
+
+    public void lampAction(int row, int column) {
+        boardCtrl.clickLampOnBoard(row, column);
+        boolean hasWon = gameCtrl.winGameDetection();
+        if(hasWon) {
+            stopWatchCtrl.getStopWatch().stopStopWatch();
+        }
+        int moveCount = moveCounterCtrl.getMoveCounter().getMoveCount();
+        if(moveCount == 0) {
+            stopWatchCtrl.getStopWatch().startStopWatch();
+        }
+        moveCounterCtrl.getMoveCounter().addToMoveCount();
+    }
 }
