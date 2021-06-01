@@ -11,12 +11,12 @@ public class Solver implements SolverObservable {
     private final List<SolverObserver> observers = new ArrayList<>();
 
     Board board;
-
     int boardSize;
 
-    boolean[][] booleanBoard;
+    int[][] intBoard;
+    int[][] solutionBoard;
 
-    int[][] solution;
+    
 
     public Solver(Board board) {
         this.board = board;
@@ -36,9 +36,8 @@ public class Solver implements SolverObservable {
 
     public void run() {
         boardSize = board.getSize();
-
-        booleanBoard = new boolean[boardSize][boardSize];
-        solution = new int[boardSize][boardSize];
+        intBoard = new int[boardSize][boardSize];
+        solutionBoard = new int[boardSize][boardSize];
 
         System.out.println("Runs solver");
         fillBoard();
@@ -50,13 +49,16 @@ public class Solver implements SolverObservable {
         } else {
             solverLoop();
         }
-
     }
 
     public void fillBoard() {
-        for(int i = 0; i < boardSize; i++) {
-            for(int j = 0; j < boardSize; j++) {
-                booleanBoard[i][j] = board.getBoardMatrix()[i][j].getIsActive();
+        for(int row = 0; row < boardSize; row++) {
+            for(int column = 0; column < boardSize; column++) {
+                if(board.getBoardMatrix()[row][column].getIsActive()) {
+                    intBoard[row][column] = 1;
+                } else {
+                    intBoard[row][column] = 0;
+                }
             }
         }
     }
@@ -65,50 +67,50 @@ public class Solver implements SolverObservable {
         for(int a = 0; a < boardSize; a++) {
             for(int b = 0; b < boardSize; b++) {
                 if(a == b) {
-                    click(a, 0);
+                    click(0, a);
                     if(win()) {
                         showSolution();
                         return;
                     } else {
-                        click(a, 0);
+                        click(0, a);
                     }
                 } else if(a >= b) {
                     continue;
                 } else {
-                    click(a, 0);
-                    click(b, 0);
+                    click(0, a);
+                    click(0, b);
                     if(win()) {
                         showSolution();
                         return;
                     } else {
-                        click(a, 0);
-                        click(b, 0);
+                        click(0, a);
+                        click(0, b);
                     }
                 }
                 for(int c = 0; c < boardSize; c++) {
                     if(a >= b || b >= c) {
                         continue;
                     } else if(a == b && b == c) {
-                        click(a, 0);
+                        click(0, a);
                         if(win()) {
                             showSolution();
                             return;
                         } else {
-                            click(a, 0);
+                            click(0, a);
                         }
                     } else if(a == b || b == c || a == c) {
                         continue;
                     } else {
-                        click(a, 0);
-                        click(b, 0);
-                        click(c, 0);
+                        click(0, a);
+                        click(0, b);
+                        click(0, c);
                         if(win()) {
                             showSolution();
                             return;
                         } else {
-                            click(a, 0);
-                            click(b, 0);
-                            click(c, 0);
+                            click(0, a);
+                            click(0, b);
+                            click(0, c);
                         }
                     }
                 }
@@ -119,22 +121,21 @@ public class Solver implements SolverObservable {
     }
 
     public void solve() {
-        for(int i = 0; i < boardSize - 1; i++) {
-            for(int j = 0; j < boardSize; j++) {
-                if(booleanBoard[i][j]) {
+        for(int row = 0; row < boardSize - 1; row++) {
+            for(int column = 0; column < boardSize; column++) {
+                if(intBoard[row][column] % 2 == 1) {
                     try {
-                        click(j, i + 1);
-                    } catch(Exception ignored) {}
+                        click(row + 1, column);
+                    } catch(ArrayIndexOutOfBoundsException ignored) {}
                 }
             }
         }
-
     }
 
     public boolean win() {
-        for(int i = 0; i < boardSize; i++) {
-            for(int j = 0; j < boardSize; j++) {
-                if(booleanBoard[i][j]) {
+        for(int row = 0; row < boardSize; row++) {
+            for(int column = 0; column < boardSize; column++) {
+                if(intBoard[row][column] % 2 == 1) {
                     return false;
                 }
             }
@@ -143,40 +144,31 @@ public class Solver implements SolverObservable {
     }
 
     public void showSolution() {
-        for(int[] array : solution) {
+        for(int[] array : solutionBoard) {
             for(int number : array) {
-                System.out.print(number % 2  + " ");
+                System.out.print(number % 2 + " ");
             }
             System.out.println();
         }
-
         System.out.println("Solution found");
-
     }
 
-    public void click(int x, int y) {
-        boolean state;
+    public void click(int row, int column) {
+        intBoard[row][column] += 1;
+        solutionBoard[row][column] += 1;
 
-        state = booleanBoard[y][x];
-        booleanBoard[y][x] = !state;
+        switchAdjacent(row + 1, column);
+        switchAdjacent(row - 1, column);
+        switchAdjacent(row, column + 1);
+        switchAdjacent(row, column - 1);
 
-        switchAdjacent(x, y + 1);
-        switchAdjacent(x, y - 1);
-        switchAdjacent(x + 1, y);
-        switchAdjacent(x - 1, y);
-
-        solution[y][x] += 1;
         solve();
-
     }
 
-    public void switchAdjacent(int x, int y) {
-        boolean state;
-
+    public void switchAdjacent(int row, int column) {
         try {
-            state = booleanBoard[y][x];
-            booleanBoard[y][x] = !state;
-        } catch(Exception ignored) {}
+            intBoard[row][column] += 1;
+        } catch(ArrayIndexOutOfBoundsException ignored) {}
     }
 
 }

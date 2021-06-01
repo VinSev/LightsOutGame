@@ -35,6 +35,11 @@ public class Lamp {
 
     public void setBackgroundColor(Color color) {
         lamp.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
+        if(color == Color.RED) {
+            isActive = false;
+        } else if(color == Color.GRAY) {
+            isActive = true;
+        }
     }
 
     public void switchBackgroundColor() {
