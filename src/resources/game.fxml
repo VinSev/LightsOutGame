@@ -5,31 +5,86 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="760.0" style="-fx-background-color: #36393F;" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="150.0" prefHeight="710.0" prefWidth="610.0">
          <children>
-            <FlowPane fx:id="boardPane" hgap="2.0" prefHeight="610.0" prefWidth="610.0" vgap="2.0" />
-            <FlowPane fx:id="boardSizeMenuPane" hgap="2.0" layoutY="610.0" prefHeight="100.0" prefWidth="610.0">
+            <FlowPane fx:id="boardPane" hgap="2.0" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: #36393F;" vgap="2.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="2.0" top="2.0" />
+               </padding></FlowPane>
+            <FlowPane fx:id="boardSizeMenuPane" hgap="60.0" layoutY="610.0" prefHeight="100.0" prefWidth="610.0" style="-fx-background-color: #36393F;">
                <children>
-                  <Button fx:id="threeByThreeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setBoardSizeTo3x3Action" prefHeight="100.0" prefWidth="200.0" text="3x3" />
-                  <Button fx:id="fourByFourButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setBoardSizeTo4x4Action" prefHeight="100.0" prefWidth="200.0" text="4x4" />
-                  <Button fx:id="fiveByFiveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setBoardSizeTo5x5Action" prefHeight="100.0" prefWidth="200.0" text="5x5" />
+                  <Button fx:id="threeByThreeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setBoardSizeTo3x3Action" prefHeight="90.0" prefWidth="140.0" style="-fx-background-color: #2c2f33; -fx-text-fill: #FFFFFF;" text="3x3">
+                     <font>
+                        <Font name="Nirmala UI" size="14.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin></Button>
+                  <Button fx:id="fourByFourButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setBoardSizeTo4x4Action" prefHeight="90.0" prefWidth="140.0" style="-fx-background-color: #2c2f33; -fx-text-fill: #FFFFFF;" text="4x4">
+                     <font>
+                        <Font name="Nirmala UI" size="14.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin></Button>
+                  <Button fx:id="fiveByFiveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setBoardSizeTo5x5Action" prefHeight="90.0" prefWidth="140.0" style="-fx-background-color: #2c2f33; -fx-text-fill: #FFFFFF;" text="5x5">
+                     <font>
+                        <Font name="Nirmala UI" size="14.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin></Button>
                </children>
                <padding>
-                  <Insets left="2.0" />
+                  <Insets bottom="5.0" left="32.0" />
                </padding>
             </FlowPane>
          </children>
       </Pane>
-      <FlowPane fx:id="mainMenuPane" prefHeight="710.0" prefWidth="150.0" vgap="2.0">
+      <FlowPane fx:id="mainMenuPane" prefHeight="710.0" prefWidth="150.0" style="-fx-background-color: #36393F;" vgap="50.0">
          <children>
-            <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="140.0" prefWidth="150.0" text="Time: 00:00:00" />
-            <Label fx:id="moveCounterLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="140.0" prefWidth="150.0" text="Moves: 0" />
-            <Button fx:id="solverButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#solveGameAction" prefHeight="140.0" prefWidth="150.0" text="Solve" />
-            <Button fx:id="resetButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetGameAction" prefHeight="140.0" prefWidth="150.0" text="Reset" />
-            <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exitGameAction" prefHeight="140.0" prefWidth="150.0" text="Quit" />
+            <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="121.0" style="-fx-text-fill: #FFFFFF;" text="Time: 00:00:00">
+               <font>
+                  <Font name="Nirmala UI" size="14.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="14.0" right="14.0" />
+               </FlowPane.margin></Label>
+            <Label fx:id="moveCounterLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="121.0" style="-fx-text-fill: #FFFFFF;" text="Moves: 0">
+               <font>
+                  <Font name="Nirmala UI" size="14.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="14.0" right="14.0" />
+               </FlowPane.margin></Label>
+            <Button fx:id="solverButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#solveGameAction" prefHeight="100.0" prefWidth="140.0" style="-fx-background-color: #2c2f33; -fx-text-fill: #FFFFFF; -fx-background-radius: 3;" text="Solve">
+               <font>
+                  <Font name="Nirmala UI" size="14.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </FlowPane.margin></Button>
+            <Button fx:id="resetButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetGameAction" prefHeight="100.0" prefWidth="140.0" style="-fx-background-color: #2c2f33; -fx-text-fill: #FFFFFF; -fx-background-radius: 3;" text="Reset">
+               <font>
+                  <Font name="Nirmala UI" size="14.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </FlowPane.margin></Button>
+            <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exitGameAction" prefHeight="100.0" prefWidth="140.0" style="-fx-background-color: #2c2f33; -fx-text-fill: #FFFFFF; -fx-background-radius: 3;" text="Quit">
+               <font>
+                  <Font name="Nirmala UI" size="14.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </FlowPane.margin></Button>
          </children>
       </FlowPane>
    </children>

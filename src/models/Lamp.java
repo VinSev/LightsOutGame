@@ -21,32 +21,24 @@ public class Lamp {
         return lamp;
     }
 
-    public Color getBackgroundColor() {
-        if(isActive) {
-            return Color.RED;
-        } else {
-            return Color.GRAY;
-        }
-    }
-
     public boolean getIsActive() {
         return isActive;
     }
 
     public void setBackgroundColor(Color color) {
-        lamp.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
-        if(color == Color.RED) {
+        lamp.setBackground(new Background(new BackgroundFill(color, new CornerRadii(3), Insets.EMPTY)));
+        if(color == Color.web("0xF04747")) {
             isActive = false;
-        } else if(color == Color.GRAY) {
+        } else if(color == Color.DIMGRAY) {
             isActive = true;
         }
     }
 
     public void switchBackgroundColor() {
         if(!isActive) {
-            setBackgroundColor(Color.RED);
+            setBackgroundColor(Color.web("0xF04747"));
         } else {
-            setBackgroundColor(Color.GRAY);
+            setBackgroundColor(Color.DIMGRAY);
         }
         isActive = !isActive;
     }

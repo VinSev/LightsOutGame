@@ -90,16 +90,6 @@ public class Solver implements SolverObservable {
                 for(int c = 0; c < boardSize; c++) {
                     if(a >= b || b >= c) {
                         continue;
-                    } else if(a == b && b == c) {
-                        click(0, a);
-                        if(win()) {
-                            showSolution();
-                            return;
-                        } else {
-                            click(0, a);
-                        }
-                    } else if(a == b || b == c || a == c) {
-                        continue;
                     } else {
                         click(0, a);
                         click(0, b);

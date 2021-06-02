@@ -1,17 +1,9 @@
 package controllers;
 
-import javafx.animation.Animation;
-import javafx.animation.FillTransition;
-import javafx.animation.Interpolator;
-import javafx.animation.Transition;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 import models.Board;
 import models.Lamp;
 import models.MoveCounter;
@@ -105,7 +97,7 @@ public class GameCtrl {
 
         for(int row = 0; row < boardSize; row++) {
             for(int column = 0; column < boardSize; column++) {
-                if(boardMatrix[row][column].getLamp().getBackground().getFills().get(0).getFill() == Color.RED) return false;
+                if(boardMatrix[row][column].getIsActive()) return false;
             }
         }
         return true;

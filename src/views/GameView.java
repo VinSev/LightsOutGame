@@ -110,10 +110,10 @@ public class GameView implements BoardObserver, MoveCounterObserver, SolverObser
 
     private Button createLamp(Lamp[][] boardMatrix, int row, int column, int boardSize) {
         boardMatrix[row][column] = new Lamp(new Button());
-        boardMatrix[row][column].setBackgroundColor(Color.GRAY);
+        boardMatrix[row][column].setBackgroundColor(Color.DIMGRAY);
 
         Button lamp = boardMatrix[row][column].getLamp();
-        lamp.setPrefSize(610 / boardSize - 2, 610 / boardSize - 2);
+        lamp.setPrefSize(610 / boardSize - 3, 610 / boardSize - 3);
 
         lamp.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> gameCtrl.lampAction(row, column));
         return lamp;
